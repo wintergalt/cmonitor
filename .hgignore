@@ -1,0 +1,13 @@
+syntax: glob
+*.swp
+*.pyc
+*.prefs
+*.sqlite-journal
+./build
+./dist
+
+
+syntax: regexp
+\.log$
+^\.project$
+^\.pydevproject$

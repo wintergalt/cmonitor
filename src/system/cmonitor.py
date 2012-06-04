@@ -28,8 +28,8 @@ class ProcessMonitor(CMonitorWorker):
             self.client.load_system_host_keys()
             self.client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
             if password == '':
-              # ask for one on stdin
-              password = getpass.getpass('Password for %s@%s: ' % (username, hostname))
+                # ask for one on stdin
+                password = getpass.getpass('Password for %s@%s: ' % (username, hostname))
             
             self.client.connect(hostname, port, username, password)
             self.transport = self.client.get_transport()
@@ -39,9 +39,9 @@ class ProcessMonitor(CMonitorWorker):
             print '*** Caught exception: %s: %s' % (e.__class__, e)
             traceback.print_exc()
         try:
-          self.client.close()
+            self.client.close()
         except:
-          pass
+            pass
 
     def do_work(self):
         self.chan = self.transport.open_session()
@@ -51,9 +51,9 @@ class ProcessMonitor(CMonitorWorker):
 
     def close(self):
         if self.chan:
-          self.chan.close()
+            self.chan.close()
         if self.client:
-          self.client.close()
+            self.client.close()
 
 if __name__ == '__main__':
     pm = ProcessMonitor()
